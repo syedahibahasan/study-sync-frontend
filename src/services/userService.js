@@ -22,7 +22,7 @@ axios.interceptors.response.use(
 
 // User login function
 export const login = async (email, password) => {
-  const { data } = await axios.post("http://localhost:5001/api/users/login", { email, password });
+  const { data } = await axios.post("/api/users/login", { email, password });
   if (data.user) {
     localStorage.setItem("user", JSON.stringify(data.user));
     localStorage.setItem("token", data.token); // Store the JWT token
@@ -39,7 +39,7 @@ export const logout = () => {
 
 // User registration function
 export const register = async (registerData) => {
-  const { data } = await axios.post("http://localhost:5001/api/users/register", {
+  const { data } = await axios.post("/api/users/register", {
     email: registerData.email,
     username: registerData.username,
     password: registerData.password
@@ -89,7 +89,7 @@ export const removeCourse = async (userId, courseId) => {
 export const saveSchedule = async (userId, schedule, busyTimes, groupTimes, courseTimes) => {
   const token = localStorage.getItem("token");
   const response = await axios.put(
-    `http://localhost:5001/api/users/${userId}/schedule`,
+    `/api/users/${userId}/schedule`,
     { schedule, busyTimes, groupTimes, courseTimes },
     { headers: { Authorization: `Bearer ${token}` } }
   );
@@ -108,7 +108,7 @@ export const fetchSchedule = async (userId) => {
 export const savePreferredLocations = async (userId, preferredLocations) => {
   const token = localStorage.getItem("token");
   const response = await axios.post(
-    `http://localhost:5001/api/users/${userId}/preferred-locations`,
+    `/api/users/${userId}/preferred-locations`,
     { preferredLocations },
     { headers: { Authorization: `Bearer ${token}` } }
   );
@@ -118,7 +118,7 @@ export const savePreferredLocations = async (userId, preferredLocations) => {
 export const fetchPreferredLocations = async (userId) => {
   const token = localStorage.getItem("token");
   const { data } = await axios.get(
-    `http://localhost:5001/api/users/${userId}/preferred-locations`,
+    `/api/users/${userId}/preferred-locations`,
     { headers: { Authorization: `Bearer ${token}` } }
   );
   
