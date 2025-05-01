@@ -14,7 +14,7 @@ axios.interceptors.response.use(
       // Clear storage and redirect to login
       localStorage.removeItem("user");
       localStorage.removeItem("token");
-      window.location.href = "/login"; // Force redirect to login
+      console.warn("Session expired");
     }
     return Promise.reject(error);
   }
