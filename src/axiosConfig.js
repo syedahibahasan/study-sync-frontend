@@ -4,6 +4,6 @@ import axios from "axios";
 const baseURL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:5001"
-    : process.env.REACT_APP_API_URL;
+    : "https://study-sync-backend-wdue.onrender.com";
 
 axios.defaults.baseURL = baseURL;
