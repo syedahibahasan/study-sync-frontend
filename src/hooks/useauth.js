@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
     userService.logout();
     setUser(null);
     toast.success("Logged out successfully!");
-    navigate("/login");
+    // navigate("/login");
   };
 
   const fetchEnrolledCourses = async () => {
